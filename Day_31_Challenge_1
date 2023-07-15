@@ -1,0 +1,38 @@
+#Day 31 Challenge 1
+
+def color_t(color, text):
+    if color == "black":
+        return "\033[0;30m" + text + "\033[0m"
+    elif color == "red":
+        return "\033[0;31m" + text + "\033[0m"
+    elif color == "green":
+        return "\033[0;32m" + text + "\033[0m"
+    elif color == "blue":
+        return "\033[0;34m" + text + "\033[0m"
+    else:
+        return "\033[1;33m" + text + "\033[0m"
+
+# create variables with color codes by calling the function
+black = color_t("black", "=")
+red = color_t("red", "=")
+green = color_t("green", "=")
+blue = color_t("blue", "=")
+white = color_t("white", "=")
+
+print(f"{black} {red} {green} {blue} Music App ", end="")
+print(f"{black} {red} {green} {blue}")
+print()
+print()
+text_1 = "Radio Gaga"
+text_2 = "Queen"
+print(f"{text_1: >20}")
+print(f"{text_2: >15}")
+print()
+prev = color_t("white", "PREV")
+next = color_t("red", "NEXT")
+pause = color_t("green", "PAUSE")
+print(f"{prev}")
+print(f"{next: >20}")
+print(f"{pause: >25}")
+
+#for output refer wiki
