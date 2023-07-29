@@ -1,11 +1,11 @@
 def hangman(word):
-    guessed_letters = set()
+    guessed_letters = []
     wrong_guesses = 0
-    word_set = set(word.lower())
+    word_list = list(word.lower())
 
     while True:
         display_word = ""
-        for letter in word.lower():
+        for letter in word_list:
             if letter in guessed_letters:
                 display_word += letter
             else:
@@ -17,7 +17,7 @@ def hangman(word):
 
         print(f"\nWord: {display_word}")
         print(f"Guessed Letters: {', '.join(guessed_letters)}")
-        guess = input("Guess a letter: ").lower()x
+        guess = input("Guess a letter: ").lower()
 
         if len(guess) != 1 or not guess.isalpha():
             print("Invalid input. Please enter a single letter.")
@@ -27,9 +27,9 @@ def hangman(word):
             print("You already guessed that letter.")
             continue
 
-        guessed_letters.add(guess)
+        guessed_letters.append(guess)
 
-        if guess in word_set:
+        if guess in word_list:
             print("Correct guess!")
         else:
             print("Wrong guess.")
