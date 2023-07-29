@@ -1,3 +1,16 @@
+import random
+
+listOfWords = ["british", "suave", "integrity", "accent", "evil", "genius", "Downton"]
+
+def draw_hangman(wrong_guesses):
+    hangman_parts = [
+        "  O  ",
+        " /|\ ",
+        " / \ ",
+    ]
+    hangman_display = "\n".join(hangman_parts[:wrong_guesses])
+    print(hangman_display)
+
 def hangman(word):
     guessed_letters = []
     wrong_guesses = 0
@@ -15,8 +28,8 @@ def hangman(word):
             print(f"Congratulations! You win! The word was '{word}'.")
             break
 
-        print(f"\nWord: {display_word}")
-        print(f"Guessed Letters: {', '.join(guessed_letters)}")
+        print("\nWord:", display_word)
+        print("Guessed Letters:", ", ".join(guessed_letters))
         guess = input("Guess a letter: ").lower()
 
         if len(guess) != 1 or not guess.isalpha():
@@ -34,13 +47,15 @@ def hangman(word):
         else:
             print("Wrong guess.")
             wrong_guesses += 1
+            draw_hangman(wrong_guesses)
 
         if wrong_guesses > 6:
             print("Sorry, you lost. The word was:", word)
             break
 
-# Prompt the user to enter a word for the hangman game
-target_word = input("Enter the word to guess: ").strip().lower()
 
-# Start the hangman game
+# Choose a random word from the list for the player to guess
+target_word = random.choice(listOfWords)
+
+# Start the hangman game with the selected word
 hangman(target_word)
